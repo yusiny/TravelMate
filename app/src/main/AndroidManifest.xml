@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.database_termproject.travelmate">
+    package="com.algorithm_termproject.travelmate">
 
     <application
         android:allowBackup="true"
@@ -13,8 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelMate"
         tools:targetApi="31" >
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC5KUO2-BOnl_I489sj8Q32jE-yDi0Up4k" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
+
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.algorithm_termproject.travelmate.ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -24,11 +33,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.course.CourseActivity"
+            android:name="com.algorithm_termproject.travelmate.ui.course.CourseActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.place.PlaceActivity"
+            android:name="com.algorithm_termproject.travelmate.ui.place.PlaceActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>

@@ -1,4 +1,4 @@
-package com.database_termproject.travelmate
+package com.algorithm_termproject.travelmate
 
 import org.junit.Test
 

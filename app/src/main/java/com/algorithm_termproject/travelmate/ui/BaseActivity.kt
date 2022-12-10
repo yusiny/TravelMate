@@ -1,4 +1,4 @@
-package com.database_termproject.travelmate.ui
+package com.algorithm_termproject.travelmate.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
