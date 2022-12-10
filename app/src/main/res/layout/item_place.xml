@@ -47,7 +47,8 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@id/item_place_divider_v"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
 
     <View
         android:id="@+id/item_place_divider_v"

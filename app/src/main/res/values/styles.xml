@@ -11,6 +11,11 @@
         <item name="android:textSize">16dp</item>
     </style>
 
+    <style name="tv_eb_14" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/nanumsquare_extrabold</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
     <!-- Bold -->
     <style name="tv_b_18" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/nanumsquare_bold</item>

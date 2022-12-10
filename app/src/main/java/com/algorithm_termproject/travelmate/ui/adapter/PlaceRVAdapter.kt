@@ -1,12 +1,13 @@
-package com.algorithm_termproject.travelmate.ui.place
+package com.algorithm_termproject.travelmate.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.algorithm_termproject.travelmate.data.Place
 import com.algorithm_termproject.travelmate.databinding.ItemPlaceBinding
 
-class PlaceRVAdapter : RecyclerView.Adapter<PlaceRVAdapter.ViewHolder>() {
+class PlaceRVAdapter(val mode: String) : RecyclerView.Adapter<PlaceRVAdapter.ViewHolder>() {
     private val placeList = arrayListOf<Place>()
 
 
@@ -28,6 +29,10 @@ class PlaceRVAdapter : RecyclerView.Adapter<PlaceRVAdapter.ViewHolder>() {
             binding.itemPlaceNumberTv.text = idx.toString()
             binding.itemPlaceTitleTv.text = place.name
             binding.itemPlaceAddressTv.text = place.address
+
+            if(mode == "new"){
+                binding.itemPlaceDeleteIv.visibility = View.VISIBLE
+            }
 
             // Click listener
             binding.itemPlaceDeleteIv.setOnClickListener {
@@ -53,6 +58,11 @@ class PlaceRVAdapter : RecyclerView.Adapter<PlaceRVAdapter.ViewHolder>() {
 
     fun getPlaceList(): ArrayList<Place>{
         return placeList
+    }
+
+    fun addPlaces(places: ArrayList<Place>){
+        placeList.addAll(places)
+        notifyDataSetChanged()
     }
 
     /* Change Listener */

@@ -9,6 +9,7 @@ import com.algorithm_termproject.travelmate.R
 import com.algorithm_termproject.travelmate.data.Place
 import com.algorithm_termproject.travelmate.databinding.ActivityPlaceBinding
 import com.algorithm_termproject.travelmate.ui.BaseActivity
+import com.algorithm_termproject.travelmate.ui.adapter.PlaceRVAdapter
 import com.algorithm_termproject.travelmate.ui.course.CourseActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -74,7 +75,7 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
 
     /* Function */
     private fun initRV() {
-        placeRVAdapter = PlaceRVAdapter()
+        placeRVAdapter = PlaceRVAdapter("new")
         binding.placePlacesRv.adapter = placeRVAdapter
 
         placeRVAdapter.setMyItemClickListener(object : PlaceRVAdapter.MyItemChangedListener {
