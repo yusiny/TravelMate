@@ -18,6 +18,9 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.gson.Gson
+import com.algorithm_termproject.travelmate.utils.removeEnter
+import com.algorithm_termproject.travelmate.utils.getTextLocation
+import com.algorithm_termproject.travelmate.utils.bitMapFromVector
 
 
 class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::inflate),
@@ -63,10 +66,10 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
 
         Log.d(
             "Place(POI-Geo)",
-            getTextLocation(poi.latLng.latitude, poi.latLng.longitude).toString()
+            getTextLocation(geocoder, poi.latLng.latitude, poi.latLng.longitude).toString()
         )
 
-        val address = getTextLocation(poi.latLng.latitude, poi.latLng.longitude).toString()
+        val address = getTextLocation(geocoder, poi.latLng.latitude, poi.latLng.longitude).toString()
         showDialog(removeEnter(poi.name), address, poi.latLng)
     }
 
@@ -142,35 +145,4 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
         }
     }
 
-    /* Utils */
-    private fun getTextLocation(lat: Double, lon: Double): String? {
-        val list = geocoder.getFromLocation(lat, lon, 1);
-        var address: String? = null
-        if (!list.isNullOrEmpty()) {
-            address =
-                "${list[0].postalCode} " + " ${list[0].locality}, ${list[0].adminArea}, ${list[0].countryName} "
-            address = removeNull(address)
-        }
-
-        return address;
-    }
-
-    private fun bitMapFromVector(context: Context, redId:Int): BitmapDescriptor {
-        val vectorDrawable= ContextCompat.getDrawable(context,redId)
-        vectorDrawable!!.setBounds(0,0,vectorDrawable.intrinsicWidth,vectorDrawable.intrinsicHeight)
-        val bitmap=
-            Bitmap.createBitmap(vectorDrawable.intrinsicWidth,vectorDrawable.intrinsicHeight,
-                Bitmap.Config.ARGB_8888)
-        val canvas= Canvas(bitmap)
-        vectorDrawable.draw(canvas)
-        return BitmapDescriptorFactory.fromBitmap(bitmap)
-    }
-
-    private fun removeEnter(str: String): String{
-        return str.replace("\n", " ")
-    }
-
-    private fun removeNull(str: String): String{
-        return str.replace("null, ", "")
-    }
 }
