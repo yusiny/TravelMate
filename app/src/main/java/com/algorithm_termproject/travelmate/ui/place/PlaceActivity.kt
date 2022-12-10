@@ -1,17 +1,15 @@
 package com.algorithm_termproject.travelmate.ui.place
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
+import android.content.Intent
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.algorithm_termproject.travelmate.R
 import com.algorithm_termproject.travelmate.data.Place
 import com.algorithm_termproject.travelmate.databinding.ActivityPlaceBinding
 import com.algorithm_termproject.travelmate.ui.BaseActivity
+import com.algorithm_termproject.travelmate.ui.course.CourseActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -99,9 +97,17 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
 
             Log.d("Place(List)", placeList.toString())
 
-            if (placeList.size >= 2)
-                showToast("다음 액티비티로 이동")
-            else showToast("장소를 2개 이상 선택해 주세요")
+            if (placeList.size < 2){
+                showToast("장소를 2개 이상 선택해 주세요")
+                return@setOnClickListener
+            }
+
+            val intent = Intent(this, CourseActivity::class.java)
+            val placeListJson = Gson().toJson(placeList)
+            intent.putExtra("placeList", placeListJson)
+
+            startActivity(intent)
+            finish()
         }
     }
 

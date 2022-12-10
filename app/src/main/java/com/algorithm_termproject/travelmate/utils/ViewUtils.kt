@@ -41,3 +41,4 @@ fun removeEnter(str: String): String{
 fun removeNull(str: String): String{
     return str.replace("null, ", "")
 }
+
