@@ -1,6 +1,7 @@
 package com.algorithm_termproject.travelmate.ui.course
 
 import android.os.Bundle
+import android.util.Log
 import com.algorithm_termproject.travelmate.data.Place
 import com.algorithm_termproject.travelmate.databinding.ActivityCourseBinding
 import com.algorithm_termproject.travelmate.ui.BaseActivity
@@ -10,6 +11,7 @@ import com.google.gson.reflect.TypeToken
 
 class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding::inflate) {
     private lateinit var placeList: ArrayList<Place>
+    private lateinit var path: ArrayList<Place>
 
     override fun initAfterBinding() {
 
@@ -23,5 +25,8 @@ class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding:
         placeList = Gson().fromJson(placeListJson, type)
 
         val algorithm = Algorithm(placeList)
+        path = algorithm.path
+
+        Log.d("CourseActivity", path.toString())
     }
 }
