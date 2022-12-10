@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import com.algorithm_termproject.travelmate.R
+import com.algorithm_termproject.travelmate.data.Course
 import com.algorithm_termproject.travelmate.data.Place
 import com.algorithm_termproject.travelmate.databinding.ActivityCourseBinding
 import com.algorithm_termproject.travelmate.ui.BaseActivity
@@ -15,11 +16,13 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 
 class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding::inflate),
     OnMapReadyCallback {
@@ -29,8 +32,16 @@ class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding:
     private lateinit var map: GoogleMap
     private lateinit var icon: BitmapDescriptor
 
-    override fun initAfterBinding() {
+    private val db = Firebase.firestore
 
+    override fun initAfterBinding() {
+        //databaseRef = FirebaseDatabase.getInstance().reference
+
+        binding.courseSaveTv.setOnClickListener {
+            val title = binding.courseTitleEt.text.toString()
+            val course = Course("yusin", title, placeList)
+            uploadCourse(course)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,5 +101,25 @@ class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding:
         polylineOptions.add(placeList[0].latLng)
 
         val polyline = map.addPolyline(polylineOptions)
+    }
+
+    /* Firebase */
+    private fun uploadCourse(course: Course){
+        val user = hashMapOf(
+            "user" to course.user,
+            "title" to course.title,
+            "placeList" to course.placeList
+        )
+
+        db.collection("courses")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(
+                    "Firebase",
+                    "DocumentSnapshot added with ID: " + documentReference.id
+                )
+                finish()
+            }
+            .addOnFailureListener { e -> Log.w("Firebase", "Error adding document", e) }
     }
 }

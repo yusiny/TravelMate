@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 Properties properties = new Properties()
@@ -10,7 +11,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.database_termproject.travelmate"
+        applicationId "com.algorithm_termproject.travelmate"
         minSdk 28
         targetSdk 32
         versionCode 1
@@ -61,4 +62,7 @@ dependencies {
 
     // Gson
     implementation 'com.google.code.gson:gson:2.8.9'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
 }
