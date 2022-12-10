@@ -3,11 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable-v24/button_rectangle_primary.xml" value="0.192" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/bg_dialog.xml" value="0.201" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/bg_sliding_panel.xml" value="0.192" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/bg_sliding_pannel.xml" value="0.201" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/button_circle_primary.xml" value="0.193" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/button_rectangle_gray.xml" value="0.201" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/button_rectangle_primary.xml" value="0.192" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/ic_launcher_background.xml" value="0.193" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/ic_marker.xml" value="0.23" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/ic_slidinig_up.xml" value="0.23" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/activity_course.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/activity_place.xml" value="0.128" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/activity_place.xml" value="0.4" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/fragment_new_place_dialog.xml" value="0.4" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/item_place.xml" value="0.4" />
       </map>
     </option>
   </component>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/item_place_number_tv"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:text="1"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/button_circle_primary"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/item_place_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="뉴욕 현대 미술관"
+        style="@style/tv_b_12"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/item_place_number_tv"/>
+
+    <TextView
+        android:id="@+id/item_place_address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11w 53rd St, New York, NY 10019 미국"
+        style="@style/tv_10"
+        android:textColor="@color/deep_gray"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/item_place_title_tv"
+        app:layout_constraintStart_toStartOf="@id/item_place_title_tv"/>
+
+    <ImageView
+        android:id="@+id/item_place_delete_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@id/item_place_divider_v"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:id="@+id/item_place_divider_v"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/item_place_address_tv"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bg_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/new_place_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="뉴욕 현대 미술관"
+        style="@style/tv_b_16"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/new_place_address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11w 53rd St, New York, NY 10019 미국"
+        style="@style/tv_14"
+        android:textColor="@color/deep_gray"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/new_place_title_tv"
+        app:layout_constraintStart_toStartOf="@id/new_place_title_tv"/>
+
+
+    <TextView
+        android:id="@+id/new_place_add_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추가"
+        style="@style/tv_b_14"
+        android:textColor="@color/white"
+        android:background="@drawable/button_rectangle_primary"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintTop_toBottomOf="@id/new_place_address_tv"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/new_place_cancel_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="취소"
+        style="@style/tv_b_14"
+        android:textColor="@color/deep_gray"
+        android:background="@drawable/button_rectangle_gray"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="10dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintTop_toBottomOf="@id/new_place_address_tv"
+        app:layout_constraintEnd_toStartOf="@id/new_place_add_tv"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/new_place_cancel_tv"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
