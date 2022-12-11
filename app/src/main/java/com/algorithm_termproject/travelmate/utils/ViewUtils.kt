@@ -4,9 +4,13 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.location.Geocoder
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+
+typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
 /* LatLag -> Location */
 fun getTextLocation(geocoder: Geocoder, lat: Double, lon: Double): String? {

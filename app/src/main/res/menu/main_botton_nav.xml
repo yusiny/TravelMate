@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/exploreFragment"
+        android:enabled="true"
+        android:icon="@drawable/selector_nav_explore"
+        android:menuCategory="secondary"
+        android:title="Explore" />
+    <item
+        android:id="@+id/myFragment"
+        android:enabled="true"
+        android:icon="@drawable/selector_nav_my"
+        android:menuCategory="secondary"
+        android:title="My" />
+</menu>
