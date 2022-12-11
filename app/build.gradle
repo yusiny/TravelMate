@@ -7,6 +7,7 @@ plugins {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 def google_map_key = properties.getProperty('google.api.key')
+
 android {
     compileSdk 32
 

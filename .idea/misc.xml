@@ -15,6 +15,7 @@
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/ic_slidinig_up.xml" value="0.23" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/selector_nav_explore.xml" value="0.1595" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/drawable/selector_nav_my.xml" value="0.1595" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/acitivity_course_detail.xml" value="0.4" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/activity_course.xml" value="0.264" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/activity_place.xml" value="0.4" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/fragment_explore.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/fragment_my.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/fragment_new_place_dialog.xml" value="0.4" />
+        <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/item_course.xml" value="0.4" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/layout/item_place.xml" value="0.4" />
         <entry key="..\:/Users/kysle/AndroidStudioProjects/TravelMate/app/src/main/res/menu/main_botton_nav.xml" value="0.21927083333333333" />
       </map>
