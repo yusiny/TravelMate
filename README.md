@@ -1,5 +1,5 @@
 # TravelMate
-Best Travel route from your accommodation using TSP with backtracking (2022-2 Algorithm Term-Project)
+Best Travel route from your accommodation using TSP with backtracking (2022-2 Algorithm Term-Project) (2022.12.10-11)
 
 <p align="center">
   <img width="800px" src="https://user-images.githubusercontent.com/87323603/206906371-59df6cf8-aa54-4404-9c39-7a7b5ca99adf.png">
