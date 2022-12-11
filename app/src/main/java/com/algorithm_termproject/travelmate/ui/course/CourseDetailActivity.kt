@@ -16,16 +16,15 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 
-class CourseDetailActivity: BaseActivity<AcitivityCourseDetailBinding>(AcitivityCourseDetailBinding::inflate),
+class CourseDetailActivity :
+    BaseActivity<AcitivityCourseDetailBinding>(AcitivityCourseDetailBinding::inflate),
     OnMapReadyCallback {
     private lateinit var rvAdapter: PlaceRVAdapter
 
@@ -54,13 +53,13 @@ class CourseDetailActivity: BaseActivity<AcitivityCourseDetailBinding>(Acitivity
         mapFragment!!.getMapAsync(this)
     }
 
-    private fun initRV(){
+    private fun initRV() {
         rvAdapter = PlaceRVAdapter("none")
         binding.courseDetailPlacesRv.adapter = rvAdapter
         rvAdapter.addPlaces(placeList)
     }
 
-    private fun initUI(){
+    private fun initUI() {
         binding.courseDetailTitleTv.text = course.title
         binding.courseDetailUserTv.text = course.user
     }
@@ -68,7 +67,7 @@ class CourseDetailActivity: BaseActivity<AcitivityCourseDetailBinding>(Acitivity
     /* Map */
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(placeList[0].latLng, 10F))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(placeList[0].latLng, 12F))
 
         icon = bitMapFromVector(this, R.drawable.ic_pin)
 
@@ -76,12 +75,12 @@ class CourseDetailActivity: BaseActivity<AcitivityCourseDetailBinding>(Acitivity
         initRV()
     }
 
-    private fun drawPolyLine(){
+    private fun drawPolyLine() {
         val polylineOptions = PolylineOptions().width(25f)
             .color(Color.parseColor("#3771E0"))
             .geodesic(true)
 
-        for(place in placeList){
+        for (place in placeList) {
             polylineOptions.add(place.latLng)
         }
 
