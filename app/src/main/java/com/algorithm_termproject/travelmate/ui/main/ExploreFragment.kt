@@ -8,6 +8,7 @@ import com.algorithm_termproject.travelmate.databinding.FragmentExploreBinding
 import com.algorithm_termproject.travelmate.ui.BaseFragment
 import com.algorithm_termproject.travelmate.ui.adapter.CourseRVAdapter
 import com.algorithm_termproject.travelmate.ui.course.CourseDetailActivity
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
@@ -35,6 +36,7 @@ class ExploreFragment: BaseFragment<FragmentExploreBinding>(FragmentExploreBindi
         val courseList = arrayListOf<Course>()
 
         db.collection("courses")
+            .orderBy("time", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {

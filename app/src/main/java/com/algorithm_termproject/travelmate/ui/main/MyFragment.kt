@@ -9,6 +9,7 @@ import com.algorithm_termproject.travelmate.ui.BaseFragment
 import com.algorithm_termproject.travelmate.ui.adapter.CourseRVAdapter
 import com.algorithm_termproject.travelmate.ui.course.CourseDetailActivity
 import com.algorithm_termproject.travelmate.utils.getName
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
@@ -34,18 +35,19 @@ class MyFragment: BaseFragment<FragmentMyBinding>(FragmentMyBinding::inflate){
 
     private fun getMyCourses(){
         val courseList = arrayListOf<Course>()
+        val user = getName(requireContext())
+        Log.d("My", user)
 
         db.collection("courses")
+            .orderBy("time", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d("Explore", "${document.id} => ${document.data}")
-
                     val user = document.data["user"]
                     val title = document.data["title"]
                     val placeList = document.data["placeList"]
 
-                    if(user != getName(requireContext())) return@addOnSuccessListener
+                    if(user != getName(requireContext())) continue
 
                     val course = Course(user as String, title as String,
                         placeList as ArrayList<Place>
@@ -58,7 +60,7 @@ class MyFragment: BaseFragment<FragmentMyBinding>(FragmentMyBinding::inflate){
                 courseRVAdapter.addPlaces(courseList)
             }
             .addOnFailureListener { exception ->
-                Log.w("Explore", "Error getting documents.", exception)
+                Log.w("My", "Error getting documents.", exception)
             }
     }
 }

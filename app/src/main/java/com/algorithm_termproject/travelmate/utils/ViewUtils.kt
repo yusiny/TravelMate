@@ -10,9 +10,11 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
+/* View Utils */
+
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
-/* LatLag -> Location */
+/** A function to change LatLon to address*/
 fun getTextLocation(geocoder: Geocoder, lat: Double, lon: Double): String? {
     val list = geocoder.getFromLocation(lat, lon, 1);
     var address: String? = null
@@ -25,7 +27,7 @@ fun getTextLocation(geocoder: Geocoder, lat: Double, lon: Double): String? {
     return address;
 }
 
-/* Vector to bitMap*/
+/** A function to get BitmapDescriptor from vector image */
 fun bitMapFromVector(context: Context, redId:Int): BitmapDescriptor {
     val vectorDrawable= ContextCompat.getDrawable(context,redId)
     vectorDrawable!!.setBounds(0,0,vectorDrawable.intrinsicWidth,vectorDrawable.intrinsicHeight)
@@ -37,11 +39,12 @@ fun bitMapFromVector(context: Context, redId:Int): BitmapDescriptor {
     return BitmapDescriptorFactory.fromBitmap(bitmap)
 }
 
-/* String */
+/** A function to remove Enter in string */
 fun removeEnter(str: String): String{
     return str.replace("\n", " ")
 }
 
+/** A function to remove null in string */
 fun removeNull(str: String): String{
     return str.replace("null, ", "")
 }
