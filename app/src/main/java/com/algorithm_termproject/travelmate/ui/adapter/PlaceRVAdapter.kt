@@ -18,7 +18,7 @@ class PlaceRVAdapter(val mode: String) : RecyclerView.Adapter<PlaceRVAdapter.Vie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(position+1, placeList[position])
+        holder.bind(position, placeList[position])
     }
 
     override fun getItemCount(): Int = placeList.size
@@ -33,6 +33,11 @@ class PlaceRVAdapter(val mode: String) : RecyclerView.Adapter<PlaceRVAdapter.Vie
             if(mode == "new"){
                 binding.itemPlaceDeleteIv.visibility = View.VISIBLE
             }
+
+            if(idx == 0)
+                binding.itemPlaceDormIv.visibility = View.VISIBLE
+            else
+                binding.itemPlaceDormIv.visibility = View.GONE
 
             // Click listener
             binding.itemPlaceDeleteIv.setOnClickListener {

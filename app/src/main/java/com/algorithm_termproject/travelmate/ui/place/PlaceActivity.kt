@@ -26,8 +26,8 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
     OnMapReadyCallback, GoogleMap.OnPoiClickListener {
     private lateinit var map: GoogleMap
     private lateinit var geocoder: Geocoder
-    private var markerList = arrayListOf<Marker>()
     private lateinit var icon: BitmapDescriptor
+    private lateinit var iconD: BitmapDescriptor
 
     private lateinit var placeRVAdapter: PlaceRVAdapter
 
@@ -52,6 +52,7 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(37.56, 126.97), 10F))
 
         icon = bitMapFromVector(this, R.drawable.ic_pin)
+        iconD = bitMapFromVector(this, R.drawable.ic_pin_d)
         map.setOnPoiClickListener(this)
     }
 
@@ -104,8 +105,8 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
             }
 
             val intent = Intent(this, CourseActivity::class.java)
-            val placeListJson = Gson().toJson(placeList)
-            intent.putExtra("placeList", placeListJson)
+            intent.putExtra("placeList", Gson().toJson(placeList))
+            intent.putExtra("camera", Gson().toJson(map.cameraPosition))
 
             startActivity(intent)
             finish()
@@ -137,10 +138,6 @@ class PlaceActivity : BaseActivity<ActivityPlaceBinding>(ActivityPlaceBinding::i
                 .title(place.name)
                 .icon(icon)
         )
-
-        if (marker != null) {
-            markerList.add(marker)
-        }
     }
 
     private fun deleteMarker(){

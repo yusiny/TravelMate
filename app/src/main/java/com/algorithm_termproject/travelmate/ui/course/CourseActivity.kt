@@ -11,17 +11,17 @@ import com.algorithm_termproject.travelmate.ui.BaseActivity
 import com.algorithm_termproject.travelmate.ui.adapter.PlaceRVAdapter
 import com.algorithm_termproject.travelmate.utils.Algorithm
 import com.algorithm_termproject.travelmate.utils.bitMapFromVector
+import com.algorithm_termproject.travelmate.utils.getName
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import de.p72b.maps.animation.AnimatedPolyline
 
 
 class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding::inflate),
@@ -31,17 +31,18 @@ class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding:
 
     private lateinit var map: GoogleMap
     private lateinit var icon: BitmapDescriptor
+    private lateinit var cameraPosition: CameraPosition
 
     private val db = Firebase.firestore
 
     override fun initAfterBinding() {
-        //databaseRef = FirebaseDatabase.getInstance().reference
-
         binding.courseSaveTv.setOnClickListener {
             val title = binding.courseTitleEt.text.toString()
-            val course = Course("yusin", title, placeList)
+            val course = Course(getName(this), title, placeList)
             uploadCourse(course)
         }
+
+        binding.courseTitleEt.setText(getName(this) + "의 코스")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,10 +52,11 @@ class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding:
         val type = object : TypeToken<ArrayList<Place>>() {}.type
         placeList = Gson().fromJson(placeListJson, type)
 
+        cameraPosition = Gson().fromJson(intent.getStringExtra("camera"), CameraPosition::class.java)
+
         val algorithm = Algorithm(placeList)
         path = algorithm.path
 
-        Log.d("CourseActivity", path.toString())
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.course_map) as SupportMapFragment?
@@ -70,7 +72,9 @@ class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding:
     /* Map */
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(placeList[0].latLng, 10F))
+
+        val latLng = LatLng(cameraPosition.target.latitude, cameraPosition.target.longitude)
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, cameraPosition.zoom - 0.5f))
 
         icon = bitMapFromVector(this, R.drawable.ic_pin)
         drawPolyLine()
@@ -94,13 +98,18 @@ class CourseActivity: BaseActivity<ActivityCourseBinding>(ActivityCourseBinding:
             .color(Color.parseColor("#3771E0"))
             .geodesic(true)
 
+        val latLngList = arrayListOf<LatLng>()
         for(place in placeList){
-            polylineOptions.add(place.latLng)
+            latLngList.add(place.latLng)
         }
+        latLngList.add(placeList[0].latLng)
 
-        polylineOptions.add(placeList[0].latLng)
+        val animatedPolyline = AnimatedPolyline(map, latLngList, polylineOptions)
 
-        val polyline = map.addPolyline(polylineOptions)
+        //polylineOptions.add(placeList[0].latLng)
+       // val polyline = map.addPolyline(polylineOptions)
+
+        animatedPolyline.start()
     }
 
     /* Firebase */
