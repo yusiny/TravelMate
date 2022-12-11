@@ -2,10 +2,9 @@
 Best Travel route from your accommodation using TSP with backtracking (2022-2 Algorithm Term-Project) (2022.12.10-11)
 
 <p align="center">
-  <img width="800px" src="https://user-images.githubusercontent.com/87323603/206906371-59df6cf8-aa54-4404-9c39-7a7b5ca99adf.png">
+  <img width="800px" src="https://user-images.githubusercontent.com/87323603/206907122-87ade298-7b08-4a50-b64f-cecb3c411458.png">
 </p>
 <br/> <br/>
-
 
 ### 1️⃣Upload Course
 지도에서 원하는 장소를 선택해 코스를 생성할 수 있다 (단, 첫번째 장소는 숙소여야 함) 
